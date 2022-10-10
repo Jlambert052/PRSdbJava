@@ -51,7 +51,7 @@ public class RequestlinesController {
 	
 	@GetMapping("{id}")
 	public ResponseEntity<Requestline> getRequestlineByPK(@PathVariable int id) {
-		if(id ==0 || id <0) {
+		if(id <= 0) {
 			return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
 		}
 		Optional<Requestline> thisReqline = lineRepo.findById(id);

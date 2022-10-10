@@ -42,9 +42,6 @@ public class UsersController {
 		if(login.isEmpty()) {
 			return new ResponseEntity<>(HttpStatus.NOT_FOUND);
 		}
-		if(!username.equals(login.get().getUsername())|| !password.equals(login.get().getPassword())) {
-			return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
-		}
 		return new ResponseEntity<User>(login.get(), HttpStatus.OK);
 	}
 	

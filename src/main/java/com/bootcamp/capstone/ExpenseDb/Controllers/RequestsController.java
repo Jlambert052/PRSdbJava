@@ -30,7 +30,7 @@ public class RequestsController {
 	
 	@GetMapping("{id}")
 	public ResponseEntity<Request> getRequestByPK(@PathVariable int id) {
-		if(id ==0 | id < 0) {
+		if(id <= 0) {
 			return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
 		}
 		Optional<Request> thisRequest = reqRepo.findById(id);
@@ -59,7 +59,7 @@ public class RequestsController {
 	@SuppressWarnings("rawtypes")
 	@PutMapping("{id}")
 	public ResponseEntity putRequest(@RequestBody Request request, @PathVariable int id) {
-		if(id == 0 | id < 0) {
+		if(id <= 0) {
 			return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
 		}
 		if(id != request.getId()) {
@@ -72,7 +72,7 @@ public class RequestsController {
 	//set REVIEW unless total < 50, then set APPROVED
 	@PutMapping("review/{id}")
 	public ResponseEntity<Request> reviewRequest(@PathVariable int id, @RequestBody Request request) {
-		if(id != request.getId() ||id == 0 || id < 0) {
+		if(id != request.getId() ||id <= 0) {
 			return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
 		}
 		Optional<Request> thisRequest = reqRepo.findById(id);
@@ -81,13 +81,11 @@ public class RequestsController {
 		}
 		if(thisRequest.get().getTotal() <= 50) {
 			thisRequest.get().setStatus(APPROVED);
-			reqRepo.save(thisRequest.get());
-			return new ResponseEntity<>(HttpStatus.NO_CONTENT);
-		} else
+		} else {
 			thisRequest.get().setStatus(REVIEW);
-			reqRepo.save(thisRequest.get());
-			return new ResponseEntity<>(HttpStatus.NO_CONTENT);
-		
+		}
+		reqRepo.save(thisRequest.get());
+		return new ResponseEntity<>(HttpStatus.NO_CONTENT);
 	}
 	
 	//set APPROVED

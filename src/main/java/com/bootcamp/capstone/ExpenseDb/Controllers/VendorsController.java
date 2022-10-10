@@ -27,7 +27,7 @@ public class VendorsController {
 	
 	@GetMapping("{id}")
 	public ResponseEntity<Vendor> getVendorByPK(@PathVariable int id) {
-		if(id == 0 | id < 0) {
+		if(id <= 0) {
 			return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
 		}
 		Optional<Vendor> thisVendor = vendRepo.findById(id);
@@ -58,7 +58,7 @@ public class VendorsController {
 	@SuppressWarnings("rawtypes")
 	@PutMapping("{id}")
 	public ResponseEntity putVendor(@RequestBody Vendor vendor, @PathVariable int id) {
-		if(id != vendor.getId() | id == 0 | id < 0) {
+		if(id != vendor.getId() | id <= 0) {
 			return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
 		}
 		Optional<Vendor> thisVendor = vendRepo.findById(id);
@@ -71,7 +71,7 @@ public class VendorsController {
 	@SuppressWarnings("rawtypes")
 	@DeleteMapping("{id}")
 	public ResponseEntity deleteVendor(@PathVariable int id) {
-		if(id == 0 | id < 0) {
+		if(id <= 0) {
 			return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
 		}
 		Optional<Vendor> thisVendor = vendRepo.findById(id);
