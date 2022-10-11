@@ -26,7 +26,7 @@ public class UsersController {
 	
 	@GetMapping("{id}")
 	public ResponseEntity<User> getUserByPK(@PathVariable int id) {
-		if(id ==0) {
+		if(id == 0) {
 			return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
 		}
 		Optional<User> thisUser = userRepo.findById(id);
@@ -70,7 +70,7 @@ public class UsersController {
 	@SuppressWarnings("rawtypes")
 	@DeleteMapping("{id}")
 	public ResponseEntity deleteUser(@PathVariable int id) {
-		if(id == 0 | id < 0) {
+		if(id <= 0) {
 			return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
 		}
 		Optional<User> thisUser = userRepo.findById(id);

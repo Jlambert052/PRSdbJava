@@ -77,7 +77,7 @@ public class RequestlinesController {
 	@SuppressWarnings("rawtypes")
 	@PutMapping("{id}")
 	public ResponseEntity putRequestline(@RequestBody Requestline requestline, @PathVariable int id) throws Exception{
-		if(id != requestline.getId() ||id ==0 ||id <0) {
+		if(id != requestline.getId() ||id <= 0) {
 			return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
 		}
 		Optional<Requestline> thisReqline = lineRepo.findById(id);
@@ -94,7 +94,7 @@ public class RequestlinesController {
 	@SuppressWarnings("rawtypes")
 	@DeleteMapping("{id}")
 	public ResponseEntity deleteRequestline(@PathVariable int id) throws Exception{
-		if(id == 0 ||id < 0) {
+		if(id <= 0) {
 			return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
 		}
 		Optional<Requestline> thisReqline = lineRepo.findById(id);

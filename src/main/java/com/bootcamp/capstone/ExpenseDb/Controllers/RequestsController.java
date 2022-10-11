@@ -59,10 +59,7 @@ public class RequestsController {
 	@SuppressWarnings("rawtypes")
 	@PutMapping("{id}")
 	public ResponseEntity putRequest(@RequestBody Request request, @PathVariable int id) {
-		if(id <= 0) {
-			return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
-		}
-		if(id != request.getId()) {
+		if(id <= 0 || id != request.getId() ) {
 			return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
 		}
 		reqRepo.save(request);
@@ -91,7 +88,7 @@ public class RequestsController {
 	//set APPROVED
 	@PutMapping("approve/{id}")
 	public ResponseEntity<Request> approveRequest(@PathVariable int id, @RequestBody Request request) {
-		if(id != request.getId() ||id == 0 || id < 0) {
+		if(id != request.getId() ||id <= 0) {
 			return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
 		}
 		Optional<Request> thisRequest = reqRepo.findById(id);
@@ -106,7 +103,7 @@ public class RequestsController {
 	//set REJECTED
 	@PutMapping("reject/{id}")
 	public ResponseEntity<Request> rejectRequest(@PathVariable int id, @RequestBody Request request) {
-		if(id != request.getId() ||id == 0 || id < 0) {
+		if(id != request.getId() ||id <= 0) {
 			return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
 		}
 		Optional<Request> thisRequest = reqRepo.findById(id);
@@ -122,7 +119,7 @@ public class RequestsController {
 	@SuppressWarnings("rawtypes")
 	@DeleteMapping("{id}")
 	public ResponseEntity deleteRequest(@PathVariable int id) {
-		if(id == 0 | id < 0) {
+		if (id <= 0) {
 			return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
 		}
 		Optional<Request> thisRequest = reqRepo.findById(id);
