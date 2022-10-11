@@ -75,12 +75,9 @@ public class RequestsController {
 		Optional<Request> thisRequest = reqRepo.findById(id);
 		if(thisRequest.isEmpty()) {
 			return new ResponseEntity<>(HttpStatus.NOT_FOUND);
-		}
-		if(thisRequest.get().getTotal() <= 50) {
-			thisRequest.get().setStatus(APPROVED);
-		} else {
-			thisRequest.get().setStatus(REVIEW);
-		}
+		}//ternary operator; replaces if/else
+		String result = (thisRequest.get().getTotal() <= 50) ? APPROVED : REVIEW;
+		thisRequest.get().setStatus(result);
 		reqRepo.save(thisRequest.get());
 		return new ResponseEntity<>(HttpStatus.NO_CONTENT);
 	}

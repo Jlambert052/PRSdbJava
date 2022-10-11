@@ -9,6 +9,9 @@ import org.springframework.web.bind.annotation.*;
 
 import com.bootcamp.capstone.ExpenseDb.Models.Po;
 import com.bootcamp.capstone.ExpenseDb.Models.Vendor;
+import com.bootcamp.capstone.ExpenseDb.Repositories.ProductRepository;
+import com.bootcamp.capstone.ExpenseDb.Repositories.RequestRepository;
+import com.bootcamp.capstone.ExpenseDb.Repositories.RequestlineRepository;
 import com.bootcamp.capstone.ExpenseDb.Repositories.VendorRepository;
 
 @CrossOrigin
@@ -18,6 +21,12 @@ public class VendorsController {
 	
 	@Autowired
 	private VendorRepository vendRepo;
+	@Autowired
+	private ProductRepository prodRepo;
+	@Autowired
+	private RequestlineRepository lineRepo;
+	@Autowired 
+	private RequestRepository requestRepo;
 	
 	@GetMapping
 	public ResponseEntity<Iterable<Vendor>> getVendors() {
@@ -41,8 +50,8 @@ public class VendorsController {
 	@GetMapping("po/{vendorid}")
 	public ResponseEntity<Po> CreatePo(int vendorId) {
 		 Po po = new Po(); 
-		 po.vendor = vendRepo.findById(vendorId);
-		 var poReq = 
+		 po.vendor = vendRepo.findById(vendorId).get();
+		 var poReq =
 	}
 	*/
 	
