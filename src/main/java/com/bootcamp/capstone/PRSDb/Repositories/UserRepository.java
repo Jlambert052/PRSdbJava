@@ -1,11 +1,11 @@
-package com.bootcamp.capstone.ExpenseDb.Repositories;
+package com.bootcamp.capstone.PRSDb.Repositories;
 
 import java.util.Optional;
 
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
 
-import com.bootcamp.capstone.ExpenseDb.Models.User;
+import com.bootcamp.capstone.PRSDb.Models.User;
 
 public interface UserRepository extends CrudRepository<User, Integer>{
 

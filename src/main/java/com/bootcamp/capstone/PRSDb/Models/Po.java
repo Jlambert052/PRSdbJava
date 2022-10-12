@@ -1,4 +1,4 @@
-package com.bootcamp.capstone.ExpenseDb.Models;
+package com.bootcamp.capstone.PRSDb.Models;
 
 public class Po {
 

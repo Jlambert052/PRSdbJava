@@ -1,10 +1,10 @@
-package com.bootcamp.capstone.ExpenseDb.Repositories;
+package com.bootcamp.capstone.PRSDb.Repositories;
 
 import java.util.Optional;
 
 import org.springframework.data.repository.CrudRepository;
 
-import com.bootcamp.capstone.ExpenseDb.Models.Product;
+import com.bootcamp.capstone.PRSDb.Models.Product;
 
 public interface ProductRepository extends CrudRepository<Product, Integer>{
 	

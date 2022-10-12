@@ -1,4 +1,4 @@
-package com.bootcamp.capstone.ExpenseDb.Controllers;
+package com.bootcamp.capstone.PRSDb.Controllers;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -9,14 +9,15 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import com.bootcamp.capstone.ExpenseDb.Models.Po;
-import com.bootcamp.capstone.ExpenseDb.Models.Poline;
-import com.bootcamp.capstone.ExpenseDb.Models.Vendor;
-import com.bootcamp.capstone.ExpenseDb.Repositories.ProductRepository;
-import com.bootcamp.capstone.ExpenseDb.Repositories.RequestRepository;
-import com.bootcamp.capstone.ExpenseDb.Repositories.RequestlineRepository;
-import com.bootcamp.capstone.ExpenseDb.Repositories.VendorRepository;
+import com.bootcamp.capstone.PRSDb.Models.Po;
+import com.bootcamp.capstone.PRSDb.Models.Poline;
+import com.bootcamp.capstone.PRSDb.Models.Vendor;
+import com.bootcamp.capstone.PRSDb.Repositories.ProductRepository;
+import com.bootcamp.capstone.PRSDb.Repositories.RequestRepository;
+import com.bootcamp.capstone.PRSDb.Repositories.RequestlineRepository;
+import com.bootcamp.capstone.PRSDb.Repositories.VendorRepository;
 
+@SuppressWarnings("unused")
 @CrossOrigin
 @RestController
 @RequestMapping("/api/vendors")

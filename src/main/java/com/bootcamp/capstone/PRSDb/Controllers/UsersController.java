@@ -1,4 +1,4 @@
-package com.bootcamp.capstone.ExpenseDb.Controllers;
+package com.bootcamp.capstone.PRSDb.Controllers;
 
 import java.util.Optional;
 
@@ -7,8 +7,8 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import com.bootcamp.capstone.ExpenseDb.Models.User;
-import com.bootcamp.capstone.ExpenseDb.Repositories.UserRepository;
+import com.bootcamp.capstone.PRSDb.Models.User;
+import com.bootcamp.capstone.PRSDb.Repositories.UserRepository;
 
 @CrossOrigin
 @RestController
