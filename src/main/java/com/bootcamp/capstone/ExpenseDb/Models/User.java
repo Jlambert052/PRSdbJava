@@ -4,8 +4,8 @@ import javax.persistence.*;
 
 
 
-@Entity
-@Table(name="Users", uniqueConstraints=@UniqueConstraint(name="UIDX_username", columnNames="username"))
+@Entity(name="Users")
+@Table(uniqueConstraints=@UniqueConstraint(name="UIDX_username", columnNames="username"))
 public class User {
 	
 	@Id

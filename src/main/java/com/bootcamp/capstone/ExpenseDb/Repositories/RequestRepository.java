@@ -10,4 +10,5 @@ public interface RequestRepository extends CrudRepository<Request, Integer>{
 	
 	Optional<Iterable<Request>> findByStatusAndUserIdNot(String status, int userid);
 
+	Optional<Iterable<Request>> findAllByStatus(String status);
 }

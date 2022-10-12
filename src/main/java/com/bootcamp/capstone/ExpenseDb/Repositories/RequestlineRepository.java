@@ -7,4 +7,6 @@ import com.bootcamp.capstone.ExpenseDb.Models.Requestline;
 public interface RequestlineRepository extends CrudRepository<Requestline, Integer>{
 
 	Iterable<Requestline> findByRequestId(int requestid);
+	
+	Requestline findByProductId(int productid);
 }
