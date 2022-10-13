@@ -3,6 +3,7 @@ package com.bootcamp.capstone.PRSDb.Models;
 import javax.persistence.*;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 @Entity
 @Table(name="Requestlines")

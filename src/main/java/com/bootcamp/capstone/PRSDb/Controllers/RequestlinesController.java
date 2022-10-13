@@ -36,6 +36,11 @@ public class RequestlinesController {
 		var reqTotal = 0;
 		Iterable<Requestline> ordLines = lineRepo.findByRequestId(request.getId());
 		for(var ordLine : ordLines) {
+			if(ordLine.getProduct().getPrice() == 0) {
+				var prodId = ordLine.getProduct().getId();
+				var prodPrice = prodRepo.findById(prodId).get().getPrice();
+				ordLine.getProduct().setPrice(prodPrice);
+			}
 			reqTotal += ordLine.getQuantity() * ordLine.getProduct().getPrice();
 		}
 		request.setTotal(reqTotal);
@@ -67,7 +72,7 @@ public class RequestlinesController {
 			return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
 		}
 		Requestline thisReqline = lineRepo.save(requestline);
-		var RespEntity = this.RecalcRequestTotal(thisReqline.getRequest().getId());
+		var RespEntity = this.RecalcRequestTotal(requestline.getRequest().getId());
 		if(RespEntity.getStatusCode() != HttpStatus.OK) {
 			throw new Exception("Recalculate function failed.");
 		}
